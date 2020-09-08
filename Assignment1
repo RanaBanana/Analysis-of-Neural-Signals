@@ -2,7 +2,7 @@
 ### Excercise 1
 #### a
         function [prod_table, add_table] = exc_one(m)
-        %EXC_ONE Summary of this function goes here
+        % EXC_ONE 
         %   Input is m. Produces two tables, one for multiplication and one for
         %   addition. The values in the tables are the modulus for every
         %   calculation.
@@ -20,3 +20,53 @@
         prod_table
         add_table
         end
+
+#### b
+% Assignment 1
+% Excercise 1
+
+function [prod_table, add_table, mi_table] = exc_one(m)
+% EXC_ONE 
+%   Input is m. Produces three matrices, one for multiplication, one for
+%   addition, and one for the multiplicate inverse. The values in the matrices are the modulus for every
+%   calculation. --> wait what do you mean with this sentence?
+
+prod_table = zeros(m,m);
+add_table = zeros(m,m);
+mi_table = zeros(m,2);                                  % make a matrix for the multiplicate inverse 
+
+for r = 1:m
+    for c = 1:m
+        prod_table(r,c) = mod((r-1)*(c-1),m); 
+        add_table(r,c) = mod((r-1)+(c-1),m);
+    end
+    mi_table(r,1)= r-1;
+    mi_table(r,2)= mult_inv(r-1,m);                     % see below
+end
+
+prod_table
+add_table
+mi_table
+end
+
+%%%%%%%%%
+% This next function also belongs to excercise 1b
+
+function [x] = mult_inv(a,m)
+% This function can be used in exc_one. It returns the multiplicative
+% inverse, which is the value of an integer x times a is equal to 1 in
+% mod(m).
+% Input: a = an integer between 0 and m 
+% m = the modulus. 
+
+%Input checks are not yet done.
+if a == 0 || mod(m,2) ==0 && m>2 || mod(a,2)==0 && m>2 % check input: in these instances, you never reach mod=1.
+    x=0; %It's actually not 0, but it's easier this way (i think?)
+else
+    x = 1;
+        while mod((x*a),m)~=1
+        x=x+1; 
+        end   
+end
+x               % kusje ;)
+end
