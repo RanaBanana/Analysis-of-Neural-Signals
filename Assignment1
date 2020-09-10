@@ -1,5 +1,5 @@
 ## Assignment 1
-### Excercise 1
+### Exercise 1
 #### a
         function [prod_table, add_table] = exc_one(m)
         % EXC_ONE 
@@ -23,7 +23,7 @@
 
 #### b
 % Assignment 1
-% Excercise 1
+% Exercise 1
 
 function [prod_table, add_table, mi_table] = exc_one(m)
 % EXC_ONE 
@@ -71,10 +71,19 @@ end
 x               % kusje ;)
 end
 
-% exercise 1d
-function [y] = letterToNumber (x)
+#### c
 
-numequiv = double('x');
-y = char(numequiv-65);
-disp(y)
+#### d
+
+function [numequiv] = letterToNumber (x)
+% This function turns an uppercase letter into a number in Z26
+c = char(x)
+if ischar(c)
+
+v = double(char(x)) - 65;
 end
+
+function [x] numberToLetter(v) 
+% This function turns a number in Z26 into an uppercase letter.
+x = char(v+65);
+end 
