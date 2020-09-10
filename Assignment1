@@ -70,3 +70,11 @@ else
 end
 x               % kusje ;)
 end
+
+% exercise 1d
+function [y] = letterToNumber (x)
+
+numequiv = double('x');
+y = char(numequiv-65);
+disp(y)
+end
