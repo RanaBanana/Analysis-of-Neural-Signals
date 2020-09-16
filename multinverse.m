@@ -1,5 +1,5 @@
 
-function [c] = multinverse(n,m)
+function [ModMultInv, c] = multinverse(n,m)
 % This function verifies whether a given natural number has a
 % multiplicative inverse in Zm for any given modulus m. 
 % Input: natural number n and a parameter m (for the modulus)
