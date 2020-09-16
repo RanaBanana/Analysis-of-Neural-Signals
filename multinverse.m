@@ -8,13 +8,11 @@ function [ModMultInv, c] = multinverse(n,m)
 n = abs(round(n));
 
 [G, C] = gcd(n,m)
-if G==1         % The inverse of n(mod m) exists only if gcd(n,m)=1
+if G==1         % The inverse of n(mod m) only exists if gcd(n,m)=1
     ModMultInv = mod(C,m)
     c = true;
-    %fprintf('True, modular multiplicative inverse is %4.2d\n', ModMultInv)
 else 
     c = false;
-    %disp('False, modular multiplicative inverse does not exist for these values')
 end
 
 end
