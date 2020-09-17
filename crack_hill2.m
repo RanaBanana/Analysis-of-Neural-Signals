@@ -10,6 +10,23 @@ function [decrypted_mess] = crack_hill2(encrypted_mess,known_word)
 %               message. For example in a letter, the letter will start with 
 %               the word 'dear'.
 
+% Convert a string of letters to their corresponding number, to make it so 
+% that each letter has a corresponding number (0-25). 
+t_num = letterToNumber(t); 
+
+% Input check for when x is odd.
+if mod(length(t_num),2)~=0 
+     t_num(length(t_num)+1) = t_num(length(t_num)); 
+end
+
+% Create matrix, x[1] goes to tm[1,1], x[2]-> tm[1,2] etc.
+tm = [];
+count = 1;
+for i = 1:2:length(t_num)
+    tm(1:2,count) = [t_num(i);t_num(i+1)]; 
+    count = count+1;
+end
+
 DEAR = [3 0 ; 4 17];
 HMRZ = [7 17; 12 25];
 
@@ -28,7 +45,12 @@ HMRZ_inv(2,2) = a;
 [~,ModMultInv] = multinverse(dHMRZ,26)
 HMRZ_inv = mod(ModMultInv*mod(HMRZ_inv,26),26)
 
+D = mod(DEAR*HMRZ_inv,26)
 
+message_NR = mod(D*HMRZ,26)
+message_NR = message_NR(:)'
+
+message_txt = numberToLetter(message_NR)
 
 end
 
