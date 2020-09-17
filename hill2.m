@@ -5,8 +5,9 @@ function [K_crypt, Kinv_crypt] = hill2(t,k)
 
 %% Input checks
 % Check if key is valid according to valid_key function
-if valid_key(k) == 0  
-     error("This key is invalid, please enter a four-letter key.") 
+[p] = valid_key(k);
+if p == 0  
+     error("This key is invalid, please enter a valid four-letter key. A valid key contains 4 letters and has a multiplicative inverse.") 
 end
 
 % Convert a string of letters to their corresponding number, to make it so 
@@ -28,7 +29,7 @@ end
 
 %% Calculate K and Kinv
 % Converting the letters of k to their corresponding number.
-x = letterToNumber(k);  %GAAT GOED
+x = letterToNumber(k);  
 
 % Create matrix k
 K = [x(1:2);x(3:4)];

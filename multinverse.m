@@ -1,5 +1,4 @@
-
-function [ModMultInv, c] = multinverse(n,m)
+function [c, ModMultInv] = multinverse(n,m)
 % This function verifies whether a given natural number has a
 % multiplicative inverse in Zm for any given modulus m. 
 % Input: natural number n and a parameter m (for the modulus)
@@ -7,12 +6,13 @@ function [ModMultInv, c] = multinverse(n,m)
 
 n = abs(round(n));
 
-[G, C] = gcd(n,m)
+[G, C] = gcd(n,m);
 if G==1         % The inverse of n(mod m) only exists if gcd(n,m)=1
-    ModMultInv = mod(C,m)
+    ModMultInv = mod(C,m);
     c = true;
-else 
+else
     c = false;
 end
 
 end
+

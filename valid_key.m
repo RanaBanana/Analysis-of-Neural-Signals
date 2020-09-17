@@ -1,5 +1,5 @@
 function [v] = valid_key(x)
-% valid_key checks whether a given four-letter word specifies a
+% VALID_KEY checks whether a given four-letter word specifies a
 % valid key matrix.
 % This function checks whether a given four-letter word specifies a
 % valid key matrix. The function accepts a four-letter word as input and returns True for a
@@ -23,16 +23,14 @@ dK = det(K);
 % 26, then [~,c] = multinverse(dK,26) == 1,otherwise ==0. 
 % The determinant of matrix K cannot be divided by any number which is a 
 % multiple of 2 and/ or 13, because we are using a modulus 26.
-[~,c] = multinverse(dK,26);
+c = multinverse(dK,26);
 
-%If has_mi = 1, the key matrix K is a valid key. If has_mi = 0, the key
-%matrix K is not a vaid key and therefore could'nt be used for en- or
-%decryption of a Hill 2-cipher.
+% If c == 1, the key matrix K is a valid key. If c == 0, the key
+% matrix K is not a vaid key and therefore cannot be used for en- and
+% decryption of a Hill 2-cipher.
 if c == 1
     v = true;
 else
     v = false;
 end
 end
-
-
