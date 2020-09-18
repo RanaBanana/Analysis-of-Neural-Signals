@@ -1,4 +1,4 @@
-function [v] = caesar(x,m) 
+function [v_en, v_de] = caesar(x,m) 
 %This function encrypts and decrypts a plaintext message (x) by using caesar's
 %cypher. 
 % x = input message
@@ -9,5 +9,7 @@ function [v] = caesar(x,m)
 % x+shift) within the Z26 (which is done by the mod function).
 x = letterToNumber(x); 
 new_letters= mod(x+m,26);
-v = numberToLetter(new_letters);
+v_en = numberToLetter(new_letters);
+new_letters1 = mod(x-6,26);
+v_de = numberToLetter(new_letters1);
 end
