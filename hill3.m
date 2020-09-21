@@ -16,10 +16,6 @@ size_m = 3;
 en_mess_num = letterToNumber2(en_mess);
 known_word_num = letterToNumber2(known_word);
 
-% Create a columnvector of the numbers of the input
-en_mess_num = en_mess_num(:);
-known_word_num = known_word_num(:);
-
 % Preallocate a number matrix, since the number of columns will be unknown
 % beforehand. Divided by 3 because 3 letters fit in each column.
 en_mess_num_mat = zeros(size_m,length(en_mess)/size_m);
