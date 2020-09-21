@@ -1,5 +1,5 @@
 function [v] = letterToNumber3(x) 
-% This function converts a character to a number within Z26.
+% This function converts a (string of) character(s) to a number within Z37.
 % Input: a (number of) letter(s) (could also be a lowercase letter),
 % a number or '.' (Z37).
 % Output: the corresponding number(s) 
@@ -18,7 +18,7 @@ for i = 1: length(x)
     elseif and(double(x(i))>47, double(x(i))<58)
         v(i) = double(char(x(i)))-22;
     elseif and(double(x(i))<91, double(x(i))>64)
-        v(i) = double(char(x(i))) -65;
+        v(i) = double(char(x(i)))-65;
     else
         error("Incorrect input. Please input a (number of) letter(s), a number or '.'");      
     end
