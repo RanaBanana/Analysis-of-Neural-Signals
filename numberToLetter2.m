@@ -1,6 +1,6 @@
 function [x] = numberToLetter2(v)
 % This function converts an integer within Z29 to a character.
-% Input: an integer within Z29
+% Input: a (number of) integer(s) within Z29
 % Output: the corresponding characters  
 
 for i = 1: length(v)
@@ -10,10 +10,10 @@ for i = 1: length(v)
             x(i) = char(63);        %'?'
         elseif v(i)==28
             x(i) = char(32);        %' '
-        elseif or(v(i)>28, v(i)<0)
-            error("Incorrect input. Please only input integers within Z29")           
+        elseif and(v(i)>-1, v(i)<26)
+            x(i) = char(v(i)+65);           
         else
-            x(i) = char(v(i)+65);
+            error("Incorrect input. Please only input integers within Z29")
         end
 end
 end

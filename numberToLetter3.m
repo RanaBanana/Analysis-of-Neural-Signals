@@ -1,6 +1,6 @@
 function [x] = numberToLetter3(v)
-% This function converts an integer within Z29 to a character.
-% Input: an integer within Z37
+% This function converts an integer within Z37 to a character.
+% Input: a (number of) integer(s) within Z37
 % Output: the corresponding characters  
 
 for i = 1: length(v)
