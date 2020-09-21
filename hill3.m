@@ -23,6 +23,7 @@ known_word_num = known_word_num(:);
 % Preallocate a number matrix, since the number of columns will be unknown
 % beforehand. Divided by 3 because 3 letters fit in each column.
 en_mess_num_mat = zeros(size_m,length(en_mess)/size_m);
+en_mess_num_mat9 = zeros(size_m);
 known_word_num_mat = zeros(size_m);
 
 % Create a matrix of the encrypted number vector
