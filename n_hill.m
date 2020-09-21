@@ -21,7 +21,7 @@ n = floor(sqrt(length(key_word)));
 %% Check if key is valid. 
 % Key cannot be a multiple of the alphabet or of half of the alphabet. 
 if or(mod(length(key_word), m)==0, mod(length(key_word),m)==0.5*m)
-    fprintf("Key word results in an invalid key. It has been adjusted for by rounding down the square root of the key word length.")
+    fprintf("Key word results in an invalid key. It has been adjusted by rounding down the square root of the key word length.")
 elseif length(key_word)<4
     error("Key word is too small for a cipher encryption. Please enter a key word of at least 4 characters.")
 end
