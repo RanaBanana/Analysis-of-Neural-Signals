@@ -58,12 +58,21 @@ den_mess_mat = det(en_mess_num_mat9);
 % The modular inverse of a matrix A: mod(inv(A) * det(A) * 
 % multiplicative_inverse(det(A)), length(alphabet))
 [~,ModMultInv] = multinverse(mod(den_mess_mat,29),29);
-en_mess_mat_inv = round(mod(inv(en_mess_num_mat) * den_mess_mat * ModMultInv, 29));
+en_mess_mat_inv = round(mod(inv(en_mess_num_mat9) * den_mess_mat * ModMultInv, 29));
 
-%Calculating the decyphering key D, by multiplying the known word matrix by
-%the inverse of the matrix which represents the first four letters in the
-%encrypted message.
-D = mod(known_word_mat*en_mess_mat_inv,29);
+% Calculate the decyphering key D by multiplying the known word matrix by
+% the inverse of the last nine elements in the encrypted number matrix.
+D = mod(known_word_num_mat*en_mess_mat_inv,29);
 
+%% Convert the encrypted message back to plaintext 
+% Use the decyphering key (D) to decypher the encrypted message (en_mess_num_mat)
+message_NR = mod(D*en_mess_num_mat,29);
+
+% Convert matrix to row vector
+message_NR = message_NR(:)';
+
+% Convert the series of numbers in the row vector to letters to return a
+% plaintext.
+decrypted_mess = numberToLetter2(message_NR);
 
 
