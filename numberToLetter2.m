@@ -10,7 +10,7 @@ for i = 1: length(v)
             x(i) = char(63);        %'?'
         elseif v(i)==28
             x(i) = char(32);        %' '
-        elseif or(v(i)>28, v(2)<0)
+        elseif or(v(i)>28, v(i)<0)
             error("Incorrect input. Please only input integers within Z29")           
         else
             x(i) = char(v(i)+65);
