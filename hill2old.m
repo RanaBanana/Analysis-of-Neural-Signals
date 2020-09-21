@@ -1,4 +1,4 @@
-function [K_crypt, Kinv_crypt] = hill2(t,k)
+function [K_crypt, Kinv_crypt] = hill2old(t,k)
 % This function encrypts and decrypts plaintext using a given Hill 2-
 % cipher with entries from Z26.
 % Input t: plaintext; k = key as a four-letter word
@@ -26,6 +26,7 @@ for i = 1:2:length(t_num)
     tm(1:2,count) = [t_num(i);t_num(i+1)]; 
     count = count+1;
 end
+
 %% Calculate K and Kinv
 % Converting the letters of k to their corresponding number.
 x = letterToNumber(k);  
@@ -35,11 +36,23 @@ K = [x(1:2);x(3:4)];
 
 % Calculate the determinant for matrix K.
 dK = det(K);
+ 
+% Calculate the K inverse by assigning variables a to d to each element
+% within the key matrix.
+a = K(1,1);
+b = K(1,2);
+c = K(2,1);
+d = K(2,2);
 
-% The modular inverse of a matrix A: mod(inv(A) * det(A) * 
-% multiplicative_inverse(det(A)), length(alphabet))
-[~,ModMultInv] = multinverse(mod(dK,26),26);
-Kinv = round(mod(inv(K) * dK * ModMultInv, 26));
+% Assign these values to a new 'Kinv' matrix, which holds the
+% values of the matrix used for calculating the Kinv.
+Kinv(1,1) = d;
+Kinv(1,2) = -b;
+Kinv(2,1) = -c;
+Kinv(2,2) = a;
+
+% Calculate the K inverse within Z26 (Kinv)
+Kinv = mod((multinverse(dK,26)*Kinv),26);
 
 %% Generate output
 % Calculate the numbers within Z26 corresponding to the K (for encoding) 
@@ -51,7 +64,6 @@ decryption_num = mod(Kinv*tm,26);
 % convert the row vectors back into 'words'
 K_crypt = numberToLetter(encryption_num(:)');
 Kinv_crypt = numberToLetter(decryption_num(:)');
-
 end
 
 
