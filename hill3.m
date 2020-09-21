@@ -12,7 +12,7 @@ size_m = 3;
 
 %% 2. Create a number matrix of the encrypted message and the known word
 % Convert a string of letters to their corresponding number, to make it so 
-% that each letter has a corresponding number (0-25). 
+% that each letter has a corresponding number (0-28). 
 en_mess_num = letterToNumber2(en_mess);
 known_word_num = letterToNumber2(known_word);
 
