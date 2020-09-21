@@ -3,9 +3,6 @@ function [x] = numberToLetter2(v)
 % Input: an integer within Z29
 % Output: the corresponding characters  
 
-% Preallocate a zeros vector with a length equal to that of v.
-x = zeros(1,length(v));
-
 for i = 1: length(v)
         if v(i)==26
             x(i) = char(46);        %'.'
