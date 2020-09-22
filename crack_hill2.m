@@ -1,14 +1,13 @@
 function [decrypted_mess] = crack_hill2(encrypted_mess,known_word)
 %CRACK_HILL2 cracks a Hill 2-cipher.
-%   Suppose you intercept a letter to the dean of the Faculty of Science encoded with a Hill 2-cipher that
-%   starts with HMRZHMNNRNNHGCHJMQZPVNWFLM. Write a function that accepts this (or any) string,
-%   encoded with a Hill 2-cipher and cracks the code. The function should just return the plaintext
-%   message.
+%   This function decrypts a message which is encoded with a Hill 2-cipher.
+%   It accepts any string encoded with a Hill 2-cipher and cracks the code. 
+%   The function returns the plaintext message.
 
 % encrypted_mess = The encrypted message that needs to be decrypted
-% known_word = The word you know for sure that needs to be in the encrypted
-%               message. For example in a letter, the letter will start with 
-%               the word 'dear'.
+% known_word = The word you know for sure is present in the encrypted
+%               message. (For example in a letter, the message will start with 
+%               the word 'dear'.)
 
 %% Create encrypted message matrix
 % Convert a string of letters to their corresponding number, to make it so 
@@ -83,4 +82,5 @@ message_NR = message_NR(:)';
 %plaintext.
 decrypted_mess = numberToLetter(message_NR);
 end
+
 
