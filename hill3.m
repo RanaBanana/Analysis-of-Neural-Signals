@@ -1,3 +1,4 @@
+% This script cracks the following hill 3-cipher encrypted text (in Z29):'OVXVTIBVHQFYWTYHCTKW?AMR'
 
 %% 1. Inputs
 
@@ -61,7 +62,7 @@ en_mess_mat_inv = round(mod(inv(en_mess_num_mat9) * den_mess_mat * ModMultInv, 2
 % the inverse of the last nine elements in the encrypted number matrix.
 D = mod(known_word_num_mat*en_mess_mat_inv,29);
 
-%% Convert the encrypted message back to plaintext 
+%% 4. Convert the encrypted message back to plaintext 
 % Use the decyphering key (D) to decypher the encrypted message (en_mess_num_mat)
 message_NR = mod(D*en_mess_num_mat,29);
 
