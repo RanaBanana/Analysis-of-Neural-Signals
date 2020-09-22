@@ -1,6 +1,4 @@
 function [v] = valid_key(x)
-% VALID_KEY checks whether a given four-letter word specifies a
-% valid key matrix.
 % This function checks whether a given four-letter word specifies a
 % valid key matrix. The function accepts a four-letter word as input and returns True for a
 % valid key matrix (or False otherwise).
@@ -8,15 +6,15 @@ function [v] = valid_key(x)
 if sum(isstrprop(x,'alpha'))~= 4
     error("Please enter four letters within quotation marks (e.g. 'ABCD')")
 end
-%Converting a string of letters to their corresponding number, so each
-%letter has a number (0-25). 
+% Convert a string of letters to their corresponding number, so each
+% letter has a number (0-25). 
 x = letterToNumber(x);
 
-% create matrix, x[1] goes to K[1,1], x[2]-> K[1,2]; x[3]-> K[2,1]; x[4]-> K[2,2] in
+% Create matrix, x[1] goes to K[1,1], x[2]-> K[1,2]; x[3]-> K[2,1]; x[4]-> K[2,2] in
 % matrix K.
 K = [x(1:2);x(3:4)];
 
-%Calculate the determinant for matrix K.
+% Calculate the determinant for matrix K.
 dK = det(K);
 
 % If the determinant of matrix K (dK) has a multiplicative inverse in mod 
