@@ -1,5 +1,4 @@
 function [prod_table, add_table] = mod_table(m)
-%EXC_ONE Summary of this function goes here
 %   Input is m. Produces two tables, one for multiplication and one for
 %   addition. The values in the tables are the modulus for every
 %   calculation.
